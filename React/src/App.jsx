@@ -5,9 +5,9 @@ import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
-import PostList from './components/PostList/PostList'
+import PostList from './components/PostList/PostList';
 import * as authService from '../src/services/authService';
-import * as postService from './services/postService'
+import * as postService from '../src/services/postService';
 
 export const AuthedUserContext = createContext(null);
 
@@ -20,12 +20,12 @@ const App = () => {
     setUser(null);
   };
 
-  useEffect(() => {
+  useEffect( () => {
     const fetchAllPosts = async () => {
       const postsData = await postService.index()
       setPosts(postsData);
     }
-    if (user) fetchAllPosts
+    if (user) fetchAllPosts()
   }, [user])
 
   return (
