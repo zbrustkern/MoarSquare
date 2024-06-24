@@ -24,25 +24,21 @@ const PostForm = (props) => {
     
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        if (props.post) {
-            props.handleEditPost(formData)
-        } else {
-            props.handleNewPost(formData);
-        }
+        props.post ? props.handleEditPost(props.post.id, formData) : props.handleNewPost(formData)
         setFormData(emptyForm);
     };
     
     return (
         <div className='post-form'>
         <form onSubmit={handleSubmit}>
-            <h3>{props.post.id? 'Edit Post' : 'New Post'}</h3>
-            <h1>Post Details</h1>
-            <label htmlFor="text-input">Location:</label>
+        <h3>{props.post? 'Edit Post' : 'New Post'}</h3>
+        <h1>Post Details</h1>
+            <label htmlFor="location-input">Location:</label>
                 <input
                     required
                     type="text"
                     name="location"
-                    id="text-input"
+                    id="location-input"
                     value={formData.location}
                     onChange={handleChange}
                 /><br/>
@@ -55,6 +51,7 @@ const PostForm = (props) => {
                     value={formData.text}
                     onChange={handleChange}
                 /><br/>
+                <button type="submit">{props.post ? 'Submit Changes' : 'Create New Post'}</button>
         </form>
         </div>
     )

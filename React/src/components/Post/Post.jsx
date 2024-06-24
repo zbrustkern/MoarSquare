@@ -3,12 +3,12 @@ import PostEditButtons from "../PostEditButtons/PostEditButtons"
 const Post = (props) => {
     return (
         <div className="post-box">
-            {props.post.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost} handleEditPost={props.handleEditPost} postId={props.post.id}/>}
+            {props.post.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={props.post} togglePostFormDisplay={props.togglePostFormDisplay}/>}
             <h4>{props.post.location}</h4>
             <h3>{props.post.text}</h3>
             <div className="comment-section">
                 <ul>
-                {props.post.comments.map((comment) => (
+                {props.post.comments?.map((comment) => (
                     <li key={comment.comment_id}>
                         <div>
                             {comment.comment_author_username} said:

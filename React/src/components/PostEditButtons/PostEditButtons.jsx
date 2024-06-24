@@ -3,8 +3,8 @@ const PostEditButtons = (props) => {
     return (
     <div className="post-edit-buttons">
         <>
-            <button onClick={() => props.handleEditPost(props.postId)}>🔧</button>
-            <button onClick={() => props.handleDeletePost(props.postId)}>🗑️</button>
+            <button onClick={() => props.togglePostFormDisplay(props.post)}>🔧</button>
+            <button onClick={() => props.handleDeletePost(props.post.id)}>🗑️</button>
         </>
         </div>
     )
