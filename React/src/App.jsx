@@ -22,11 +22,16 @@ const App = () => {
 
   useEffect( () => {
     const fetchAllPosts = async () => {
-      const postsData = await postService.index()
-      setPosts(postsData);
+      const postsData = await postService.indexPosts()
+      setPosts(postsData.posts);
     }
     if (user) fetchAllPosts()
   }, [user])
+
+  const handleDeletepost = async (postId) => {
+    await postService.deletePost(postId);
+    setPosts(posts.filter((post) => post.id !== postId));
+    };
 
   return (
     <>
@@ -36,7 +41,7 @@ const App = () => {
           {user ? (
             <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/posts" element={<PostList posts={posts}/>} />
+            <Route path="/posts" element={<PostList posts={posts} handleDeletepost={handleDeletepost}/>} />
             </>
           ) : (
             <Route path="/" element={<Landing />} />

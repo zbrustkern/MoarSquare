@@ -1,13 +1,22 @@
+import Post from '../Post/Post';
+
+
 const PostList = (props) => {
-    console.log(props.posts)
+
+    if (!props.posts) return (
+        <>
+        Loading...
+        </>
+    )
+
     return (
         <div className = "post-list">
             <h1>Post List</h1>
             <ul>
-            {props.posts.posts.map((post) => (
+            {props.posts.map((post) => (
                 <li key={post.id}>
                     <div>
-                        <h2>{post.text}</h2>
+                        <Post post={post} handleDeletePost={props.handleDeletepost}/>
                     </div>
                 </li>
             )
