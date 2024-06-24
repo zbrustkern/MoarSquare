@@ -44,14 +44,17 @@ const App = () => {
     };
   
   const handleEditPost = async (postId, postFormData) => {
-    const editedPost = await postService.editPost(postId, postFormData)
-    console.log(editedPost)
+    const editedPost = await postService.updatePost(postId, postFormData)
+    editedPost.post.post_author_id = user.id
+    setPosts([... posts, editedPost.post])
+    togglePostFormDisplay()
   }
 
-  const togglePostFormDisplay = (post) => {
+  const togglePostFormDisplay = (editPost) => {
     postFormDisplay? setPostFormDisplay(false) : setPostFormDisplay(true)
     editPostDisplay? setEditPostDisplay(false) : setEditPostDisplay(true)
-    postToEdit? setPostToEdit({}) : setPostToEdit(post)
+    setPostToEdit(editPost)
+    setPosts(posts.filter((post) => post.id !== editPost.id));
   }
 
   return (
