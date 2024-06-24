@@ -1,10 +1,12 @@
 import PostEditButtons from "../PostEditButtons/PostEditButtons"
+import MapBoxMap from "../MapBoxMap/MapBoxMap"
 
 const Post = (props) => {
     return (
         <div className="post-box">
             {props.post.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={props.post} togglePostFormDisplay={props.togglePostFormDisplay}/>}
             <h4>{props.post.location}</h4>
+            {/* <MapBoxMap location={props.post.location} /> */}
             <h3>{props.post.text}</h3>
             <div className="comment-section">
                 <ul>
