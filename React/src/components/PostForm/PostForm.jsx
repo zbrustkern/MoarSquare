@@ -5,7 +5,7 @@ const PostForm = (props) => {
         location: '',
         text: '',
     }
-
+    const [location, setLocation] = useState(null);
     const [formData, setFormData] = useState(emptyForm);
     const handleChange = (evt) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -21,6 +21,17 @@ const PostForm = (props) => {
         if (props.post) fillForm();
     }, [props.post])
 
+    const locateMe = () => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+            setLocation({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            });
+            setFormData({...formData, "location": `(${location.longitude},${location.latitude})`});
+            })
+        }
+    }
     
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -31,8 +42,9 @@ const PostForm = (props) => {
     return (
         <div className='post-form'>
         <form onSubmit={handleSubmit}>
-        <h3>{props.post? 'Edit Post' : 'New Post'}</h3>
-        <h1>Post Details</h1>
+        <h3>{props.post? 'Edit Check In' : 'New Check In'}</h3>
+        <h4>Post Details</h4>
+        <button onClick={locateMe}>Locate me!</button><br />
             <label htmlFor="location-input">Location:</label>
                 <input
                     required
