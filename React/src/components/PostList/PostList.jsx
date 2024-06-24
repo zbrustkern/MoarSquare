@@ -1,12 +1,20 @@
 const PostList = (props) => {
-    console.log(props.posts.posts)
+    console.log(props.posts)
     return (
-        <main>
-            {/* {props.posts.posts.map((post) => (
-                <p key={post.id}>{post.title}</p>
-            ))} */}
-        </main>
-      )
+        <div className = "post-list">
+            <h1>Post List</h1>
+            <ul>
+            {props.posts.posts.map((post) => (
+                <li key={post.id}>
+                    <div>
+                        <h2>{post.text}</h2>
+                    </div>
+                </li>
+            )
+            )}
+            </ul>
+        </div>
+    )
 }
 
 export default PostList
