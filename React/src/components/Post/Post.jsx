@@ -1,14 +1,9 @@
-const Post = (props) => {
+import PostEditButtons from "../PostEditButtons/PostEditButtons"
 
+const Post = (props) => {
     return (
         <div className="post-box">
-            <div className="post-edit-buttons">
-            <>
-                <h3>{props.post.id}</h3>
-                <button onClick={() => props.handleEditPost(props.post.id)}>🔧</button>
-                <button onClick={() => props.handleDeletePost(props.post.id)}>🗑️</button>
-            </>
-            </div>
+            {props.post.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost} handleEditPost={props.handleEditPost} postId={props.post.id}/>}
             <h4>{props.post.location}</h4>
             <h3>{props.post.text}</h3>
             <div className="comment-section">

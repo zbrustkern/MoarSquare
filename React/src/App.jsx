@@ -28,7 +28,7 @@ const App = () => {
     if (user) fetchAllPosts()
   }, [user])
 
-  const handleDeletepost = async (postId) => {
+  const handleDeletePost = async (postId) => {
     await postService.deletePost(postId);
     setPosts(posts.filter((post) => post.id !== postId));
     };
@@ -41,7 +41,7 @@ const App = () => {
           {user ? (
             <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/posts" element={<PostList posts={posts} handleDeletepost={handleDeletepost}/>} />
+            <Route path="/posts" element={<PostList posts={posts} handleDeletePost={handleDeletePost} user={user}/>} />
             </>
           ) : (
             <Route path="/" element={<Landing />} />

@@ -16,7 +16,7 @@ const PostList = (props) => {
             {props.posts.map((post) => (
                 <li key={post.id}>
                     <div>
-                        <Post post={post} handleDeletePost={props.handleDeletepost}/>
+                        <Post post={post} handleDeletePost={props.handleDeletePost} handleEditPost={props.handleEditPost} user={props.user}/>
                     </div>
                 </li>
             )
