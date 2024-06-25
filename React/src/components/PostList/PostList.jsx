@@ -11,12 +11,12 @@ const PostList = (props) => {
 
     return (
         <div className = "post-list">
-            <h1>Post List</h1>
+            <h1>Everyone's Check-in's</h1>
             <ul>
             {props.posts.map((post) => (
                 <li key={post.id}>
                     <div>
-                        <Post post={post} handleDeletePost={props.handleDeletePost} user={props.user} togglePostFormDisplay={props.togglePostFormDisplay}/>
+                        <Post posts={props.posts} post={post} handleDeletePost={props.handleDeletePost} user={props.user} togglePostFormDisplay={props.togglePostFormDisplay} setPosts={props.setPosts}/>
                     </div>
                 </li>
             )

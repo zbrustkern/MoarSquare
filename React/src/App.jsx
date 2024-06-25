@@ -67,7 +67,7 @@ const App = () => {
           {user ? (
             <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/posts" element={<PostList posts={posts} handleDeletePost={handleDeletePost} togglePostFormDisplay={togglePostFormDisplay} user={user}/>} />
+            <Route path="/posts" element={<PostList posts={posts} handleDeletePost={handleDeletePost} togglePostFormDisplay={togglePostFormDisplay} setPosts={setPosts} user={user}/>} />
             </>
           ) : (
             <Route path="/" element={<Landing />} />

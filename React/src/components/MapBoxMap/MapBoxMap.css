@@ -1,16 +1,26 @@
-.mapContainer {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-  }
 
-  .map-container {
-    width: 80%;
-    height: 40vh;
-    position: relative;
+
+.mapbox {
+    width: 100%;  /* Fill the available space */
+    height: 400px; /* Set a default height */
+    position: relative; /* Required for some Mapbox controls */
   }
   
-  .sidebar {
+.map-container {
+    width: 100%;  /* Fill the parent element */
+    height: 100%; /* Fill the available space within .mapbox */
+  }
+
+  .mapboxgl-canvas {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+  
+  /* .sidebar {
     background-color: rgb(35 55 75 / 90%);
     color: #fff;
     padding: 6px 12px;
@@ -21,4 +31,4 @@
     left: 0;
     margin: 12px;
     border-radius: 4px;
-  }
+  } */

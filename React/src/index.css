@@ -1,18 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .post-form {
   border: solid red 2px;
   border-radius: 15px;
 }
 
-.post-list {
+.post-content {
+display: flex;
+justify-content: space-between;
+background-color: antiquewhite;
 
+  button {
+    outline-style: none;
+    border: none;
+    background-color: none;
+    background-color: transparent;
+    margin-top: 1em;
+  }
 }
 
 .post-box {
+  width: 65%;
   border: solid blue 3px;
   border-radius: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .comment-section {
   border: solid green 2px;
   border-radius: 20px;
+}
+
+.comment-content {
+  display: flex;
+  justify-content: space-between;
+  button {
+    outline-style: none;
+    border: none;
+    background-color: none;
+    background-color: transparent;
+  }
 }

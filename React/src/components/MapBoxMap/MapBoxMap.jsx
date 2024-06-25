@@ -1,49 +1,46 @@
-import "./MapBoxMap.css"; // Ensure correct path and import statement
-import { useRef, useEffect, useState } from "react";
-import mapboxgl from "mapbox-gl";
+import "./MapBoxMap.css"
+import { useRef, useEffect } from "react"
+import mapboxgl from "mapbox-gl"
 
-const mbToken = import.meta.env.VITE_MAPBOX_KEY; // Double-check access token
+const mbToken = import.meta.env.VITE_MAPBOX_KEY;
 mapboxgl.accessToken = mbToken
 
 const MapBoxMap = ({ location }) => {
     const [longitudeString, latitudeString] = location.slice(1,-1).split(",")
     const longitude = parseFloat(longitudeString)
     const latitude = parseFloat(latitudeString)
-    console.log('long: '+ longitude)
-    console.log('lat: '+ latitude)
-    const mapContainer = useRef(null);
-    const [map, setMap] = useState(null); // Use state to manage map instance
-
+    const map = useRef();
+    const mapContainer = useRef();
+  
     useEffect(() => {
-        if (map) return; // Avoid re-initializing on updates
+      if (map.current) return; // Initialize map only once
+  
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current,
+        center: [longitude, latitude],
+        zoom: 11,
+        style: 'mapbox://styles/mapbox/streets-v12',
+      })
 
-        try {
-        const newMap = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: "mapbox://styles/mapbox/standard",
-            center: [longitude, latitude],
-            zoom: 9,
+    //   map.current.addControl(new mapboxgl.FullscreenControl());
+    //   map.current.addControl(new mapboxgl.NavigationControl());
+  
+        map.current.on('style.load', () => {
+            setTimeout(() => {
+            new mapboxgl.Marker()
+                .setLngLat([longitude, latitude])
+                .addTo(map.current);
+            }, 100); // Adjust timeout value as needed
         });
-        setMap(newMap); // Set map state
-
-        newMap.addControl(new mapboxgl.FullscreenControl());
-        newMap.addControl(new mapboxgl.NavigationControl());
-
-        newMap.on("style.load", () => {
-            newMap.setConfigProperty("basemap", "lightPreset", "dusk");
-        });
-
-        // Error handling (optional)
-        } catch (error) {
-        console.error("Error initializing map:", error);
-        }
-    }, [location]);
-
+  
+    }, [latitude, longitude]);
+  
     return (
-        <>
-        <h1>Mapbox</h1>
-        <div ref={mapContainer} className="map-container" /> {/* Provide container */}
-        </>
+      <>
+        <div className="mapContainer">
+          <div className="map" ref={mapContainer} />
+        </div>
+      </>
     );
 };
 
