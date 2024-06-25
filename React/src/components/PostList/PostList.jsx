@@ -11,7 +11,7 @@ const PostList = (props) => {
 
     return (
         <div className = "post-list">
-            <h1>Everyone's Check-in's</h1>
+            <h1>Check in Feed</h1>
             <ul>
             {props.posts.map((post) => (
                 <li key={post.id}>

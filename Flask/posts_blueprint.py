@@ -11,11 +11,12 @@ def posts_index():
     try:
         connection = get_db_connection()
         cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-        cursor.execute("""SELECT p.id, p.author AS post_author_id, p.location, p.text, u_post.username AS author_username, c.id AS comment_id, c.text AS comment_text, u_comment.username AS comment_author_username
+        cursor.execute("""SELECT p.id, p.author AS post_author_id, p.location, p.text, p.created_at, u_post.username AS author_username, c.id AS comment_id, c.text AS comment_text, u_comment.username AS comment_author_username
                             FROM posts p
                             INNER JOIN users u_post ON p.author = u_post.id
                             LEFT JOIN comments c ON p.id = c.post
-                            LEFT JOIN users u_comment ON c.author = u_comment.id;
+                            LEFT JOIN users u_comment ON c.author = u_comment.id
+                            ORDER BY p.created_at DESC;
                        """)
         posts = cursor.fetchall()
         consolidated_posts = consolidate_comments_in_posts(posts)

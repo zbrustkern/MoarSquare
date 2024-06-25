@@ -48,6 +48,7 @@ const Post = (props) => {
             </div>
             <hr />
             <div className="comment-section">
+                <h3>Comments...</h3>
                 <ul>
                 {props.post.comments?.map((comment) => (
                     <li key={comment.comment_id}>

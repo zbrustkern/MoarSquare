@@ -14,7 +14,7 @@ const NavBar = ({ handleSignout }) => {
               <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
             </Link></li>
               <li><Link to='/posts'>Posts</Link></li>
-              <li><Link to='' onClick={handleSignout}>SIGN OUT</Link></li>
+              <li><Link to='' onClick={handleSignout}>Sign Out</Link></li>
             </ul>
         </nav>
       ) : (
