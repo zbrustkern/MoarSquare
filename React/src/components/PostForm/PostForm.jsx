@@ -40,32 +40,43 @@ const PostForm = (props) => {
     };
     
     return (
-        <div className='post-form'>
+        <>
         <form onSubmit={handleSubmit}>
-        <h3>{props.post? 'Edit Check In' : 'New Check In'}</h3>
-        <h4>Post Details</h4>
-        <button onClick={locateMe}>Locate me!</button><br />
-            <label htmlFor="location-input">Location:</label>
-                <input
-                    required
-                    type="text"
-                    name="location"
-                    id="location-input"
-                    value={formData.location}
-                    onChange={handleChange}
-                /><br/>
-                <label htmlFor="text-input">Text:</label>
-                <input
-                    required
-                    type="text"
-                    name="text"
-                    id="text-input"
-                    value={formData.text}
-                    onChange={handleChange}
-                /><br/>
-                <button type="submit">{props.post ? 'Submit Changes' : 'Create New Post'}</button>
+            <div className='post-form'>
+                <div className='post-form-title'>
+                    <h3>{props.post? 'Edit Check In' : 'New Check In'}</h3>
+                </div>
+                <div className='post-locate-button'>
+                    <button onClick={locateMe}>Locate me!</button>
+                </div>
+                <div className='post-location-input-box'>
+                    <label htmlFor="location-input">Location:</label>
+                    <input
+                        required
+                        type="text"
+                        name="location"
+                        id="location-input"
+                        value={formData.location}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className='post-text-input-box'>
+                    <label htmlFor="text-input">Text:</label>
+                    <input
+                        required
+                        type="text"
+                        name="text"
+                        id="text-input"
+                        value={formData.text}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className='post-submit-button'>
+                    <button type="submit">{props.post ? 'Submit Changes' : 'Create New Post'}</button>
+                    </div>
+            </div>
         </form>
-        </div>
+        </>
     )
 }
 

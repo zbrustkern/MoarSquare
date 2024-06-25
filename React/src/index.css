@@ -5,10 +5,17 @@
   background-color: lightblue;
 }
 
+body {
+  margin: 5%;
+
+  ul {
+    list-style-type: none;
+  }
+}
+
 nav {
   top: 0;
   left: 0;
-  width: 100%;
   text-align: center;
   padding-top: 2%;
 }
@@ -24,35 +31,51 @@ nav li {
 }
 
 .post-form {
+  display: flex;
+  justify-content: space-between;
   border: solid white 2px;
+  padding: 0.75rem 1.5rem;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
   padding: 1rem;
   margin-bottom: 1rem;
+
+  button {
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Indicate clickable behavior */
+    text-decoration: none; /* Remove underline */
+    transition: all 0.2s ease-in-out; /* Smooth transition on hover */
+  }
+}
+
+.post-location-input-box {
+  /* display: none; */
 }
 
 .post-content {
 display: flex;
 justify-content: space-between;
-background-color: antiquewhite;
+margin-bottom: 1vh;
 
   button {
     outline-style: none;
     border: none;
     background-color: none;
     background-color: transparent;
-    margin-top: 1em;
   }
 }
 
 .post-box {
   padding: 1em;
-  width: 65%;
   border: solid blue 3px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 2vh;
+}
+
+.post-map {
+  margin-bottom: 2vh;
 }
 
 .comment-form {
@@ -63,6 +86,7 @@ background-color: antiquewhite;
 }
 
 .comment-section {
+  margin-top: 2vh;
   border: solid green 2px;
   border-radius: 20px;
 }
