@@ -1,5 +1,5 @@
 import PostEditButtons from "../PostEditButtons/PostEditButtons"
-import MapBoxMap from "../MapBoxMap/MapBoxMap"
+// import MapBoxMap from "../MapBoxMap/MapBoxMap"
 
 const Post = (props) => {
     return (
