@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const CommentForm = (props) => {
     const emptyForm = {
@@ -10,39 +10,39 @@ const CommentForm = (props) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
 
-    useEffect(() => {
-        const fillForm = () => {
-            setFormData({
-                text: props.comment.comment_text
-              })
-        }
-        if (props.comment.comment_id) fillForm();
-    }, [props.comment])
+    // useEffect(() => {
+    //     const fillForm = () => {
+    //         setFormData({
+    //             text: props.comment.comment_text
+    //           })
+    //     }
+    //     if (props.comment) fillForm();
+    // }, [props.comment])
 
 
-const handleSubmit = (evt) => {
-    evt.preventDefault();
-    props.comment.comment_id ? props.handleEditComment(props.post.id, props.comment.comment_id, formData) : props.handleNewComment(formData)
-    setFormData(emptyForm);
-};
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        props.comment ? props.handleEditComment(props.post.id, props.comment.comment_id, formData) : props.handleNewComment(props.post.id, formData)
+        setFormData(emptyForm);
+    };
 
-return (
-    <div className='comment-form'>
-    <form onSubmit={handleSubmit}>
-    <h3>{props.post? 'Edit Comment' : 'New Comment'}</h3>
-            <label htmlFor="text-input">Comment:</label>
-            <input
-                required
-                type="text"
-                name="text"
-                id="text-input"
-                value={formData.text}
-                onChange={handleChange}
-            /><br/>
-            <button type="submit">{props.post ? 'Submit Changes' : 'Submit'}</button>
-    </form>
-    </div>
-)
+    return (
+        <div className='comment-form'>
+        <form onSubmit={handleSubmit}>
+        <h3>{props.comment? 'Edit Comment' : 'New Comment'}</h3>
+                <label htmlFor="text-input">Comment:</label>
+                <input
+                    required
+                    type="text"
+                    name="text"
+                    id="text-input"
+                    value={formData.text}
+                    onChange={handleChange}
+                /><span>     </span>
+                <button type="submit">{props.comment ? 'Submit Changes' : 'Add Comment'}</button>
+        </form>
+        </div>
+    )
 }
 
 export default CommentForm
