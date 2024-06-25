@@ -27,21 +27,29 @@ const CommentForm = (props) => {
     };
 
     return (
-        <div className='comment-form'>
+        <>
         <form onSubmit={handleSubmit}>
-        <h3>{props.comment? 'Edit Comment' : 'New Comment'}</h3>
-                <label htmlFor="text-input">Comment:</label>
-                <input
-                    required
-                    type="text"
-                    name="text"
-                    id="text-input"
-                    value={formData.text}
-                    onChange={handleChange}
-                /><span>     </span>
-                <button type="submit">{props.comment ? 'Submit Changes' : 'Add Comment'}</button>
+            <div className='comment-form'>
+                <div className='comment-headline'>
+                    <h3>{props.comment? 'Edit Comment' : 'New Comment'}</h3>
+                </div>
+                <div className='comment-input-box'>
+                    <label htmlFor="text-input">Comment:</label>
+                    <input
+                        required
+                        type="text"
+                        name="text"
+                        id="text-input"
+                        value={formData.text}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className='comment-submit-button'>
+                    <button type="submit">{props.comment ? 'Submit Changes' : 'Add Comment'}</button>
+                </div>
+            </div>
         </form>
-        </div>
+        </>
     )
 }
 

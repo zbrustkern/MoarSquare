@@ -44,6 +44,8 @@ const Post = (props) => {
             {props.post.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={props.post} togglePostFormDisplay={props.togglePostFormDisplay}/>}
             </div>
             <MapBoxMap location={props.post.location} />
+            <hr />
+            <br />
             <div className="comment-section">
                 <ul>
                 {props.post.comments?.map((comment) => (

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 import { useContext } from 'react';
+import MSlogo from '../../assets/MS-logo.jpeg';
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
@@ -9,7 +10,9 @@ const NavBar = ({ handleSignout }) => {
       {user ? (
         <nav>
             <ul>
-              <li><Link to='/'>HOME</Link></li>
+            <li><Link to="/">
+              <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
+            </Link></li>
               <li><Link to='/posts'>Posts</Link></li>
               <li><Link to='' onClick={handleSignout}>SIGN OUT</Link></li>
             </ul>
