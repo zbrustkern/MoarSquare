@@ -1,6 +1,6 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import PostEditButtons from "../PostEditButtons/PostEditButtons"
-import CommentEditButtons from '../CommentEditButtons/CommentEditButtons';
+import CommentEditButtons from '../CommentEditButtons/CommentEditButtons'
 import MapBoxMap from "../MapBoxMap/MapBoxMap"
 import CommentForm from "../CommentForm/CommentForm";
 import * as postService from '../../services/postService';
@@ -8,36 +8,63 @@ import * as postService from '../../services/postService';
 
 const Post = (props) => {
 
+    const [updatedPost, setUpdatedPost] = useState({})
+
     const handleNewComment = async (postId, commentFormData) => {
-        const newComment = await postService.createComment(postId, commentFormData);
-        newComment.comment_author_username = props.user.username
-        newComment.comment_id = newComment.id
-        newComment.comment_text = newComment.text
-
-        const newPosts = props.posts.filter((oldPost) => oldPost.id !== props.post.id)
-        const newPost = ({...props.post, comments: [...props.post.comments, newComment]})
-
-        props.setPosts({ ...newPosts, newPost})
+        await postService.createComment(postId, commentFormData);
+        const returnedPost = await postService.showPost(postId)
+        setUpdatedPost(returnedPost.post)
       }
     
     const handleDeleteComment = async (postId, commentId) => {
-        console.log('post id: ' + postId)
-        console.log('comment id: ' + commentId)
         await postService.deleteComment(postId, commentId);
-        // need to make disappear
+        const returnedPost = await postService.showPost(postId)
+        setUpdatedPost(returnedPost.post)
     }
       
-    //   const handleEditPost = async (postId, postFormData) => {
-    //     const editedPost = await postService.updatePost(postId, postFormData)
-    //     editedPost.post.post_author_id = user.id
-    //     setPosts([... posts, editedPost.post])
-    //     togglePostFormDisplay()
+    //   const handleEditComment = async (postId, commentId, postFormData) => {
+    //     await postService.updatePost(postId, postFormData)
+    //     const returnedPost = await postService.showPost(postId)
+    //     setUpdatedPost(returnedPost.post)
     //   }
 
+    if (updatedPost.text) return (
+        <div className="post-box">
+        <h2>{updatedPost.author_username}</h2>
+        <div className='post-content'>
+        <h3>{updatedPost.text}</h3>
+        {updatedPost.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={updatedPost} togglePostFormDisplay={props.togglePostFormDisplay}/>}
+        </div>
+        <div className='post-map'>
+        <MapBoxMap location={updatedPost.location} />
+        </div>
+        <hr />
+        <div className="comment-section">
+            <h3>Comments...</h3>
+            <ul>
+            {updatedPost.comments?.map((comment) => (
+                <li key={comment.comment_id}>
+                    <div className='comment-content'>
+                        <div>
+                            {comment.comment_author_username} said: {comment.comment_text}
+                        </div>
+                        <div className='comment-edit-buttons'>
+                            {comment.comment_author_username == props.user.username && <CommentEditButtons handleDeleteComment={handleDeleteComment} comment={comment} post={updatedPost}/>}
+                        </div>
+                    </div>
+                </li>
+            )
+            )}
+        </ul>
+        <div className="new-comment-box">
+            <CommentForm handleNewComment={handleNewComment} post={props.post}/>
+        </div>
+        </div>
+    </div>
+    )
 
     return (
         <div className="post-box">
-            
             <h2>{props.post.author_username}</h2>
             <div className='post-content'>
             <h3>{props.post.text}</h3>

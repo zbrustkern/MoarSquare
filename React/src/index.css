@@ -48,10 +48,6 @@ nav li {
   }
 }
 
-.post-location-input-box {
-  /* display: none; */
-}
-
 .post-content {
 display: flex;
 justify-content: space-between;

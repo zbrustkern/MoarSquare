@@ -48,7 +48,6 @@ const createComment = async (postId, commentFormData) => {
         },
         body: JSON.stringify(commentFormData),
         });
-        console.log(res.json())
         return res.json();
     } catch (error) {
         console.log(error);
