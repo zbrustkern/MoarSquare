@@ -10,16 +10,6 @@ const CommentForm = (props) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
 
-    // useEffect(() => {
-    //     const fillForm = () => {
-    //         setFormData({
-    //             text: props.comment.comment_text
-    //           })
-    //     }
-    //     if (props.comment) fillForm();
-    // }, [props.comment])
-
-
     const handleSubmit = (evt) => {
         evt.preventDefault();
         props.comment ? props.handleEditComment(props.post.id, props.comment.comment_id, formData) : props.handleNewComment(props.post.id, formData)

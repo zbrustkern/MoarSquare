@@ -14,7 +14,6 @@ def consolidate_comments_in_posts(posts_with_comments):
     print(posts_with_comments)
     consolidated_posts = []
     for post in posts_with_comments:
-        # Check if this post has already been added to consolidated_posts
         post_exists = False
         for consolidated_post in consolidated_posts:
             if post["id"] == consolidated_post["id"]:
@@ -26,7 +25,6 @@ def consolidate_comments_in_posts(posts_with_comments):
                     })
                 break
 
-        # If the post doesn't exist in consolidated_posts, add it
         if not post_exists:
             post["comments"] = []
             if post["comment_id"] is not None:

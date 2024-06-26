@@ -1,6 +1,5 @@
 import Post from '../Post/Post';
 
-
 const PostList = (props) => {
 
     if (!props.posts) return (

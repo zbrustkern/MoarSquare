@@ -34,7 +34,7 @@ const App = () => {
   const handleNewPost = async (postFormData) => {
     const newPost = await postService.createPost(postFormData);
     newPost.post.post_author_id = user.id
-    setPosts([... posts, newPost.post]);
+    setPosts([newPost.post, ... posts]);
   }
 
   const handleDeletePost = async (postId) => {
@@ -45,7 +45,7 @@ const App = () => {
   const handleEditPost = async (postId, postFormData) => {
     const editedPost = await postService.updatePost(postId, postFormData)
     editedPost.post.post_author_id = user.id
-    setPosts([... posts, editedPost.post])
+    setPosts([ editedPost.post, ... posts])
     togglePostFormDisplay()
   }
 

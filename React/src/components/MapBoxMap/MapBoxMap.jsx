@@ -13,7 +13,7 @@ const MapBoxMap = ({ location }) => {
     const mapContainer = useRef();
   
     useEffect(() => {
-      if (map.current) return; // Initialize map only once
+      if (map.current) return;
   
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
@@ -22,25 +22,20 @@ const MapBoxMap = ({ location }) => {
         style: 'mapbox://styles/mapbox/streets-v12',
       })
 
-    //   map.current.addControl(new mapboxgl.FullscreenControl());
-    //   map.current.addControl(new mapboxgl.NavigationControl());
-  
-        map.current.on('style.load', () => {
-            setTimeout(() => {
-            new mapboxgl.Marker()
-                .setLngLat([longitude, latitude])
-                .addTo(map.current);
-            }, 100); // Adjust timeout value as needed
-        });
+      map.current.on('style.load', () => {
+        setTimeout(() => {
+        new mapboxgl.Marker()
+            .setLngLat([longitude, latitude])
+            .addTo(map.current);
+        }, 100);
+      });
   
     }, [latitude, longitude]);
   
     return (
-      <>
         <div className="mapContainer">
           <div className="map" ref={mapContainer} />
         </div>
-      </>
     );
 };
 

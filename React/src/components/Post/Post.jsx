@@ -14,18 +14,12 @@ const Post = (props) => {
         await postService.createComment(postId, commentFormData);
         const returnedPost = await postService.showPost(postId)
         setUpdatedPost(returnedPost.post)
-      }
+    }
     
     const handleDeleteComment = async (postId, commentId) => {
         await postService.deleteComment(postId, commentId);
         const returnedPost = await postService.showPost(postId)
         setUpdatedPost(returnedPost.post)
-    }
-      
-    const handleEditComment = async (postId, commentId, postFormData) => {
-    await postService.updatePost(postId, postFormData)
-    const returnedPost = await postService.showPost(postId)
-    setUpdatedPost(returnedPost.post)
     }
 
     if (updatedPost.text) return (

@@ -12,15 +12,15 @@ const indexPosts = async () => {
   };
 
 const showPost = async (postId) => {
-try {
-    const res = await fetch(`${BASE_URL}/${postId}`, {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    });
-    return res.json();
-    } catch (error) {
-        console.log(error);
-    }
-};
+    try {
+        const res = await fetch(`${BASE_URL}/${postId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        });
+        return res.json();
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
 const createPost = async (postFormData) => {
     try {
