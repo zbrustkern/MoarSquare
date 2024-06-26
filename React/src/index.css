@@ -224,6 +224,8 @@ nav li {
 }
 
 .landing-image {
-  background-color: black;
-  width: 100px;
+  width: 90%;
+  img {
+    max-width: 100%;
+  }
 }
