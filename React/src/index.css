@@ -72,7 +72,7 @@ nav li {
 
   button {
     background-color: var(--box-color);
-    border: solid darkgray 1px;
+    border: dotted darkgray 1px;
     border-radius: 15px;
     cursor: pointer;
     text-decoration: none;
@@ -80,7 +80,11 @@ nav li {
     line-height: 2.2;
     padding: 3px;
     padding-left: 15px;
-    padding-right: 15px
+    padding-right: 15px;
+  }
+
+  button:hover {
+    background-color: var(--background-color);
   }
 
   @media screen and (max-width: 768px) {
@@ -161,6 +165,10 @@ nav li {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+
+  button:hover {
+    background-color: var(--background-color);
+  }
 }
 
 .comment-section {
@@ -170,9 +178,8 @@ nav li {
   h3 {
     margin-bottom:2px;
   }
+  
 }
-
-
 
 .comment-content {
   display: flex;
@@ -189,5 +196,12 @@ nav li {
     border: none;
     background-color: none;
     background-color: transparent;
+  }
+}
+
+.comment-edit-buttons {
+  button {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
   }
 }
