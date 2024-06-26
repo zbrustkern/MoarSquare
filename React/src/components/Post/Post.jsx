@@ -22,11 +22,11 @@ const Post = (props) => {
         setUpdatedPost(returnedPost.post)
     }
       
-    //   const handleEditComment = async (postId, commentId, postFormData) => {
-    //     await postService.updatePost(postId, postFormData)
-    //     const returnedPost = await postService.showPost(postId)
-    //     setUpdatedPost(returnedPost.post)
-    //   }
+    const handleEditComment = async (postId, commentId, postFormData) => {
+    await postService.updatePost(postId, postFormData)
+    const returnedPost = await postService.showPost(postId)
+    setUpdatedPost(returnedPost.post)
+    }
 
     if (updatedPost.text) return (
         <div className="post-box">

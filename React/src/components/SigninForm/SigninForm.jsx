@@ -32,38 +32,40 @@ const SigninForm = (props) => {
 
   return (
     <main>
-      <h1>Log In</h1>
-      <p>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Username:</label>
-          <input
-            type="text"
-            autoComplete="off"
-            id="username"
-            value={formData.username}
-            name="username"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            autoComplete="off"
-            id="password"
-            value={formData.password}
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button>Log In</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
-        </div>
-      </form>
+      <div className='post-form'>
+        <h1>Log In</h1>
+        <p>{message}</p>
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Username:</label>
+            <input
+              type="text"
+              autoComplete="off"
+              id="username"
+              value={formData.username}
+              name="username"
+              onChange={handleChange}
+              placeholder='FunkySauce'
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              autoComplete="off"
+              id="password"
+              value={formData.password}
+              name="password"
+              onChange={handleChange}
+              placeholder='NOTpassword'
+            />
+          </div>
+          <div className='auth-buttons'>
+              <Link to="/"><button>Cancel</button></Link>
+              <button>Log In</button>
+          </div>
+        </form>
+      </div>
     </main>
   );
 };

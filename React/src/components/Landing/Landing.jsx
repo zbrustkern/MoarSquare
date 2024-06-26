@@ -1,12 +1,20 @@
+import { Link } from 'react-router-dom'
+import postImg from '../../assets/moarsquare-post.png'
+
 const Landing = () => {
   return (
     <main>
-      <h1>Hello, you are on the landing page for visitors.</h1>
+      <h1>Welcome to MoarSquare! Because why stop at four?</h1>
       <h3>
-        If you sign up for a new account, you will have the ability to sign in
-        and see your super secret dashboard.
+      <Link to='signup' >Sign up</Link> for an account to share your check-ins with friends and comment on theirs.
+        It's a whole lot more fun inside so go ahead and <Link to='signin' >sign in.</Link>
       </h3>
-    </main>
+      < hr/>
+      What you're missing:<br />
+      <div className='landing-image'>
+        <img src={postImg} alt='A moarSquare post with comments'/>
+      </div>
+      </main>
   );
 };
 

@@ -10,38 +10,50 @@ const NavBar = ({ handleSignout }) => {
       {user ? (
         <nav>
             <ul>
-            <li><Link to="/">
-            <div className='nav-pic'></div>
-              <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
-              <div className='nav-pic'></div>
-              <div className='nav-text'>
-              Home
-              </div>
-            </Link></li>
-              <li><Link to='/posts'><div className='nav-pic'></div>
-              <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
-              <div className='nav-pic'></div>
-              <div className='nav-text'>
-              Posts
-              </div>
-            </Link></li>
-              <li><Link to='' onClick={handleSignout}><div className='nav-pic'></div>
-              <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
-              <div className='nav-pic'></div>
-              <div className='nav-text'>
-              Sign Out
-              </div>
-            </Link></li>
+              <li>
+                <Link to="/">
+                  <div className='nav-pic'>
+                    <img src={MSlogo} alt='MoarSquare-Logo' height={30}/>
+                  </div>
+                  <div className='nav-text'>
+                    Home
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to='' onClick={handleSignout}>
+                  <div className='nav-pic'>
+                      <img src={MSlogo} alt='MoarSqaure-Logo' height={30}/>
+                  </div>
+                  <div className='nav-text'>
+                    Sign Out
+                  </div>
+                </Link>
+              </li>
             </ul>
         </nav>
       ) : (
         <nav>
           <ul>
             <li>
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin">
+                <div className='nav-pic'>
+                  <img src={MSlogo} alt='MoarSquare-Logo' height={30}/>
+                </div>
+                <div className='nav-text'>
+                  Sign In
+                </div>
+              </Link>
             </li>
             <li>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup">
+                <div className='nav-pic'>
+                  <img src={MSlogo} alt='MoarSquare-Logo' height={30}/>
+                </div>
+                <div className='nav-text'>
+                  Sign Up
+                </div>
+              </Link>
             </li>
           </ul>
         </nav>
