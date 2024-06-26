@@ -30,70 +30,68 @@ const Post = (props) => {
 
     if (updatedPost.text) return (
         <div className="post-box">
-        <h2>{updatedPost.author_username}</h2>
+            <h2>{updatedPost.author_username}</h2>
         <div className='post-content'>
-        <h3>{updatedPost.text}</h3>
-        {updatedPost.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={updatedPost} togglePostFormDisplay={props.togglePostFormDisplay}/>}
+            <h3>{updatedPost.text}</h3>
+            {updatedPost.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={updatedPost} togglePostFormDisplay={props.togglePostFormDisplay}/>}
         </div>
         <div className='post-map'>
-        <MapBoxMap location={updatedPost.location} />
+            <MapBoxMap location={updatedPost.location} />
         </div>
-        <hr />
+            <hr />
         <div className="comment-section">
+            <div className="new-comment-box">
+                <CommentForm handleNewComment={handleNewComment} post={props.post}/>
+            </div>
             <h3>Comments...</h3>
             <ul>
-            {updatedPost.comments?.map((comment) => (
-                <li key={comment.comment_id}>
-                    <div className='comment-content'>
-                        <div>
-                            {comment.comment_author_username} said: {comment.comment_text}
-                        </div>
-                        <div className='comment-edit-buttons'>
-                            {comment.comment_author_username == props.user.username && <CommentEditButtons handleDeleteComment={handleDeleteComment} comment={comment} post={updatedPost}/>}
-                        </div>
-                    </div>
-                </li>
-            )
-            )}
-        </ul>
-        <div className="new-comment-box">
-            <CommentForm handleNewComment={handleNewComment} post={props.post}/>
-        </div>
-        </div>
-    </div>
-    )
-
-    return (
-        <div className="post-box">
-            <h2>{props.post.author_username}</h2>
-            <div className='post-content'>
-            <h3>{props.post.text}</h3>
-            {props.post.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={props.post} togglePostFormDisplay={props.togglePostFormDisplay}/>}
-            </div>
-            <div className='post-map'>
-            <MapBoxMap location={props.post.location} />
-            </div>
-            <hr />
-            <div className="comment-section">
-                <h3>Comments...</h3>
-                <ul>
-                {props.post.comments?.map((comment) => (
+                {updatedPost.comments?.map((comment) => (
                     <li key={comment.comment_id}>
                         <div className='comment-content'>
                             <div>
                                 {comment.comment_author_username} said: {comment.comment_text}
                             </div>
                             <div className='comment-edit-buttons'>
-                                {comment.comment_author_username == props.user.username && <CommentEditButtons handleDeleteComment={handleDeleteComment} comment={comment} post={props.post}/>}
+                                {comment.comment_author_username == props.user.username && <CommentEditButtons handleDeleteComment={handleDeleteComment} comment={comment} post={updatedPost}/>}
                             </div>
                         </div>
                     </li>
-                )
-                )}
+                ))}
             </ul>
-            <div className="new-comment-box">
-                <CommentForm handleNewComment={handleNewComment} post={props.post}/>
+        </div>
+    </div>
+    )
+
+    return (
+        <div className="post-box">
+                <h2>{props.post.author_username}</h2>
+                <div className='post-content'>
+                    <h3>{props.post.text}</h3>
+                        {props.post.post_author_id == props.user.id && <PostEditButtons handleDeletePost={props.handleDeletePost}  post={props.post} togglePostFormDisplay={props.togglePostFormDisplay}/>}
+                </div>
+            <div className='post-map'>
+                <MapBoxMap location={props.post.location} />
             </div>
+            <hr />
+            <div className="comment-section">
+                <div className="new-comment-box">
+                    <CommentForm handleNewComment={handleNewComment} post={props.post}/>
+                </div>
+                <h3>Comments...</h3>
+                <ul>
+                    {props.post.comments?.map((comment) => (
+                        <li key={comment.comment_id}>
+                            <div className='comment-content'>
+                                <div>
+                                    {comment.comment_author_username} said: {comment.comment_text}
+                                </div>
+                                <div className='comment-edit-buttons'>
+                                    {comment.comment_author_username == props.user.username && <CommentEditButtons handleDeleteComment={handleDeleteComment} comment={comment} post={props.post}/>}
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )

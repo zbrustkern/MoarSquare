@@ -1,14 +1,14 @@
 
 
 .mapbox {
-    width: 100%;  /* Fill the available space */
-    height: 400px; /* Set a default height */
-    position: relative; /* Required for some Mapbox controls */
+    width: 100%; 
+    height: 400px;
+    position: relative;
   }
   
 .map-container {
-    width: 100%;  /* Fill the parent element */
-    height: 100%; /* Fill the available space within .mapbox */
+    width: 100%;
+    height: 100%;
   }
 
   .mapboxgl-canvas {

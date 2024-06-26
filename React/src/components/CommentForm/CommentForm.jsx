@@ -31,10 +31,10 @@ const CommentForm = (props) => {
         <form onSubmit={handleSubmit}>
             <div className='comment-form'>
                 <div className='comment-headline'>
-                    <h3>{props.comment? 'Edit Comment' : 'New Comment'}</h3>
+                    <h3>{props.comment? 'Edit Comment:' : 'New Comment:'}</h3>
                 </div>
                 <div className='comment-input-box'>
-                    <label htmlFor="text-input">Comment:</label>
+                    <label htmlFor="text-input"></label>
                     <input
                         required
                         type="text"
@@ -42,6 +42,7 @@ const CommentForm = (props) => {
                         id="text-input"
                         value={formData.text}
                         onChange={handleChange}
+                        placeholder='What to say...'
                     />
                 </div>
                 <div className='comment-submit-button'>

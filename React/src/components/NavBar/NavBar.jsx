@@ -11,10 +11,27 @@ const NavBar = ({ handleSignout }) => {
         <nav>
             <ul>
             <li><Link to="/">
+            <div className='nav-pic'></div>
               <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
+              <div className='nav-pic'></div>
+              <div className='nav-text'>
+              Home
+              </div>
             </Link></li>
-              <li><Link to='/posts'>Posts</Link></li>
-              <li><Link to='' onClick={handleSignout}>Sign Out</Link></li>
+              <li><Link to='/posts'><div className='nav-pic'></div>
+              <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
+              <div className='nav-pic'></div>
+              <div className='nav-text'>
+              Posts
+              </div>
+            </Link></li>
+              <li><Link to='' onClick={handleSignout}><div className='nav-pic'></div>
+              <img src={MSlogo} alt='MoarSqaure-Logo' height={70}/>
+              <div className='nav-pic'></div>
+              <div className='nav-text'>
+              Sign Out
+              </div>
+            </Link></li>
             </ul>
         </nav>
       ) : (

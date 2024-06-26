@@ -2,11 +2,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: lightblue;
+}
+
+:root {
+  --box-color: aliceblue;
+  --background-color: antiquewhite;
 }
 
 body {
   margin: 5%;
+  background-color: var(--background-color);
 
   ul {
     list-style-type: none;
@@ -14,10 +19,22 @@ body {
 }
 
 nav {
+  position: fixed;
+  background-color: var(--box-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   top: 0;
   left: 0;
+  width: 100%;
+  max-height: 15vh;
   text-align: center;
   padding-top: 2%;
+  z-index: 3;
+
+  a {
+    text-decoration: none;
+    color: rgb(62, 61, 61);
+  }
 }
 
 nav ul {
@@ -28,64 +45,126 @@ nav ul {
 
 nav li {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-form {
   display: flex;
   justify-content: space-between;
-  border: solid white 2px;
-  padding: 0.75rem 1.5rem;
+  /* border: solid white 2px; */
+  background-color: var(--box-color);
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 15vh;
   padding: 1rem;
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 
-  button {
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Indicate clickable behavior */
-    text-decoration: none; /* Remove underline */
-    transition: all 0.2s ease-in-out; /* Smooth transition on hover */
+  input[type="text"] {
+    background-color: var(--box-color);
+    border-radius: 15px;
+    border: solid darkgray 1px;
+    line-height: 2.2;
+    padding: 3px;
+    
   }
-}
-
-.post-content {
-display: flex;
-justify-content: space-between;
-margin-bottom: 1vh;
 
   button {
-    outline-style: none;
-    border: none;
-    background-color: none;
-    background-color: transparent;
+    background-color: var(--box-color);
+    border: solid darkgray 1px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    line-height: 2.2;
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 15px
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
   }
 }
 
 .post-box {
   padding: 1em;
-  border: solid blue 3px;
-  border-radius: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--box-color);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   margin-bottom: 2vh;
 }
 
+.post-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1vh;
+  
+    button {
+      outline-style: none;
+      border: none;
+      background-color: none;
+      background-color: transparent;
+    }
+  }
+
+.post-edit-buttons {
+  button {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
 .post-map {
+  border-radius: 15px;
   margin-bottom: 2vh;
 }
 
 .comment-form {
   display: flex;
   justify-content: space-between;
-  border: solid lightslategray 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  padding: 2%;
+  padding: 2rem;
+  margin-bottom: 5px;
+  line-height: 2.2;
+  padding: 3px;
+
+  .comment-input-box {
+    width: 60%;
+    line-height: 2.2;
+    padding: 3px;
+
+    input[type="text"] {
+      width: 80%;
+      height: 1.5rem;
+      background-color: var(--box-color);
+      border-radius: 15px;
+      border: solid darkgray 1px;
+      padding: 1rem;
+    }
+  }
+
+  button {
+    background-color: var(--box-color);
+    border: dotted darkgray 1px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    line-height: 2.2;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }
 
 .comment-section {
-  margin-top: 2vh;
   padding:2%;
-  border: solid lightskyblue 2px;
   border-radius: 20px;
 
   h3 {
@@ -93,17 +172,18 @@ margin-bottom: 1vh;
   }
 }
 
-.comment-input-box {
-  width: 60%;
-  input[type="text"] {
-    width: 80%;
-    height: 1.5rem;
-  }
-}
+
 
 .comment-content {
   display: flex;
   justify-content: space-between;
+  background-color: mintcream;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  padding: 3px;
+  border-radius: 5px;
+  margin-bottom: 0.5%;
+  margin-left: 20%;
   button {
     outline-style: none;
     border: none;

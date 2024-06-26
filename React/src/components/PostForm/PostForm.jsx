@@ -21,7 +21,8 @@ const PostForm = (props) => {
         if (props.post) fillForm();
     }, [props.post])
 
-    const locateMe = () => {
+    const locateMe = (evt) => {
+        evt.preventDefault();
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
             setLocation({
@@ -58,6 +59,7 @@ const PostForm = (props) => {
                         id="location-input"
                         value={formData.location}
                         onChange={handleChange}
+                        placeholder="(Longitude, Latitude)"
                     />
                 </div>
                 <div className='post-text-input-box'>
@@ -69,6 +71,7 @@ const PostForm = (props) => {
                         id="text-input"
                         value={formData.text}
                         onChange={handleChange}
+                        placeholder="What to say?..."
                     />
                 </div>
                 <div className='post-submit-button'>
