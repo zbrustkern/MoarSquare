@@ -52,8 +52,10 @@ const App = () => {
   const togglePostFormDisplay = (editPost) => {
     postFormDisplay? setPostFormDisplay(false) : setPostFormDisplay(true)
     editPostDisplay? setEditPostDisplay(false) : setEditPostDisplay(true)
-    setPostToEdit(editPost)
-    setPosts(posts.filter((post) => post.id !== editPost.id));
+    if (editPost) {
+      setPostToEdit(editPost)
+      setPosts(posts.filter((post) => post.id !== editPost.id));
+    }
   }
 
   return (

@@ -5,7 +5,6 @@ const PostForm = (props) => {
         location: '',
         text: '',
     }
-    const [location, setLocation] = useState(null);
     const [formData, setFormData] = useState(emptyForm);
     const handleChange = (evt) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -25,11 +24,9 @@ const PostForm = (props) => {
         evt.preventDefault();
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
-            setLocation({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            });
-            setFormData({...formData, "location": `(${location.longitude},${location.latitude})`});
+            setFormData({...formData, "location": `(${position.coords.longitude},${position.coords.latitude})`})
+            }, () => {
+                setFormData({...formData, "location": 'try again!'})
             })
         }
     }
