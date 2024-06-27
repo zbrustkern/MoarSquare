@@ -21,4 +21,5 @@ app.register_blueprint(comments_blueprint)
 app.register_blueprint(likes_blueprint)
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()

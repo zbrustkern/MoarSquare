@@ -14,10 +14,11 @@ Once you sign up, you can check in with your location, adding your thoughts as y
 This app was designed for people to come together and experience the joys of sharing where they are whenever they want.
 
 ## Getting Started
-If you want to dive right in you can [start here.](https://trello.com/b/SbXeXqZi/moarsquare)
+If you want to dive right in you can [start here.]()
+This repo lives [here](https://github.com/zbrustkern/moarsquare).
 
 ## Planning Materials
-I managed my worklist on this project with [Trello]().
+I managed my worklist on this project with [Trello](https://trello.com/b/SbXeXqZi/moarsquare).
 1. ![The model diagram showing the apps model relationships.](./MS-erd.png)
 2. Wireframe of original concept- ![A Social Media App wireframed.](./ms-wireframe.png)
 
@@ -29,6 +30,7 @@ Libraries utilized: Flask, Psycopg2, Flask-dotenv, PyJWT, Python-dotenv, Flask-C
 
 ## Technologies Used
 This app was built with a React front-end and a Flask back-end using PostgreSQL:
+![Python Badge](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![React Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Heroku Badge](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
