@@ -14,7 +14,7 @@ Once you sign up, you can check in with your location, adding your thoughts as y
 This app was designed for people to come together and experience the joys of sharing where they are whenever they want.
 
 ## Getting Started
-If you want to dive right in you can [start here.]()
+If you want to dive right in you can [start here.](https://moar-square.netlify.app)
 This repo lives [here](https://github.com/zbrustkern/moarsquare).
 
 ## Planning Materials
